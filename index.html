@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizapp</title>
 
+    <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 
@@ -18,57 +19,54 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body onload="init()">
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">QuizApp</a>
-        </div>
-    </nav>
+<body>
+    <div id="progressbar"></div><!--  progressbar -->
 
-    <div class="container">
-        <div class="card quiz-card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body" id="end-screen" style="display: none;">
-                <div>Quiz beendet!</div>
-                <div>Du hast <b id="right-answers">XXX</b> von <b id="all-questions">XXX</b> Fragen richtig beantwortet!
-                </div>
+    <div class="app-container">
+        <div class="content-container">
+            <div class="nav-bar">
+                <img id="navlogo" src="img/nav-logo.png">
+                <a href="#" class="navlink" onclick="start('html')">HTML</a>
+                <a href="#" class="navlink" onclick="start('css')">CSS</a>
+                <a href="#" class="navlink" onclick="start('js')">JS</a>
             </div>
-
-            <div class="card-body" id="question-body">
-                <h5 class="card-title" id="question">Frage</h5>
-
-                <div class="card mb-2 quiz-answer-card" onclick="answer('answer_1')">
-                    <div class="card-body" id="answer_1">
-                        Antwort
+            <div class="main-content">
+                <div id="starting-content">
+                    <img src="img/background.png" id="background-image">
+                    <div class="welcome-title">Welcome to<br>The Awesome HTML Quiz</div>
+                </div>
+                <div id="question-body" style="display:none">
+                    <h2 id="question">Frage?</h2>
+                    <div class="answer-container" onclick="answer('answer_1')">
+                        <div class="answer-letter">A</div>
+                        <div id="answer_1">Antwort A</div>
                     </div>
-                </div>
-
-                <div class="card mb-2 quiz-answer-card" onclick="answer('answer_2')">
-                    <div class="card-body" id="answer_2">
-                        Antwort
+                    <div class="answer-container" onclick="answer('answer_2')">
+                        <div class="answer-letter">B</div>
+                        <div id="answer_2">Antwort B</div>
                     </div>
-                </div>
-
-                <div class="card mb-2 quiz-answer-card" onclick="answer('answer_3')">
-                    <div class="card-body" id="answer_3">
-                        Antwort
+                    <div class="answer-container" onclick="answer('answer_3')">
+                        <div class="answer-letter">C</div>
+                        <div id="answer_3">Antwort C</div>
                     </div>
-                </div>
-
-                <div class="card mb-2 quiz-answer-card" onclick="answer('answer_4')">
-                    <div class="card-body" id="answer_4">
-                        Antwort
+                    <div class="answer-container" onclick="answer('answer_4')">
+                        <div class="answer-letter">D</div>
+                        <div id="answer_4">Antwort D</div>
                     </div>
+                    <button id="next-button" onclick="nextQuestion()">
+                        <img src="img/arrow_right.svg">
+                    </button>
                 </div>
-
-                <div class="question-footer">
-                    <span>
-                        <b id="currentQuestion">1</b> von <b id="numberOfQuestions">5</b> Fragen
-                    </span>
-                    <button class="btn btn-primary" disabled id="next-button" onclick="nextQuestion()">Nächste
-                        Frage</button>
+                <div id="end-screen" style="display:none">
+                    <img src="img/endscreen.png" id="endscreen-image">
+                    <div>COMPLETE<br />HTML QUIZ</div>
+                    <div>
+                        <span class="score-headline">YOUR SCORE</span>
+                        <span id="score"></span>
+                    </div>
+                    <button id="share-button" onclick="shareScore()">SHARE</button>
+                    <button id="replay-button" onclick="replay()">REPLAY</button>
                 </div>
-
             </div>
         </div>
     </div>
