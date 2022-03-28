@@ -22,16 +22,16 @@
 
 <body>
     <div id="progressbar">
-        <div id="current-progress"></div>
+        <div id="current-progress" style="display:none">0%</div>
     </div>
 
     <div class="app-container">
         <div class="content-container">
             <div class="nav-bar">
                 <img id="navlogo" src="img/nav-logo.png">
-                <a href="#" class="navlink" onclick="start('html')">HTML</a>
-                <a href="#" class="navlink" onclick="start('css')">CSS</a>
-                <a href="#" class="navlink" onclick="start('js')">JS</a>
+                <a href="#" class="navlink" onclick="start(this, 'html')">HTML</a>
+                <a href="#" class="navlink" onclick="start(this, 'css')">CSS</a>
+                <a href="#" class="navlink" onclick="start(this, 'js')">JS</a>
             </div>
             <div class="main-content">
                 <div id="starting-content">

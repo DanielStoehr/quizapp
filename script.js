@@ -139,7 +139,8 @@ function loadQuestions(section) {
   alert("Section not implemented");
 }
 
-function start(section) {
+function start(element, section) {
+  setActiveNavlink(element);
   showStartingContent(false);
   showEndScreen(false);
   resetSavedAnswers();
@@ -179,7 +180,6 @@ function showEndScreen(boolean) {
 }
 
 function setQuestion() {
-  updateProgressBar();
   if (currentQuestion >= questions.length) {
     showQuestion(false);
     showEndScreen(true);
@@ -196,6 +196,7 @@ function setQuestion() {
 }
 
 function answer(selection) {
+  updateProgressBar();
   let question = questions[currentQuestion];
   let selectedQuestionNumber = selection.slice(-1);
   let idOfRightAnswer = `answer_${question.right_answer}`;
@@ -247,6 +248,7 @@ function shareScore() {
 function replay() {
   currentQuestion = 0;
   rightAnswers = 0;
+  resetProgressBar();
   showEndScreen(false);
   showQuestion(true);
 }
@@ -254,4 +256,17 @@ function replay() {
 function updateProgressBar() {
   const progressLength = ((currentQuestion + 1) / questions.length) * 100;
   document.getElementById("current-progress").style = `width: ${progressLength}%`;
+  document.getElementById("current-progress").innerHTML = `${progressLength}%`;
+}
+
+function resetProgressBar() {
+  document.getElementById("current-progress").style = "display: none";
+}
+
+function setActiveNavlink(element) {
+  const navlinks = document.getElementsByClassName("navlink");
+  for (let i = 0; i < navlinks.length; i++) {
+    navlinks[i].classList.remove("active");
+  }
+  element.classList.add("active");
 }
