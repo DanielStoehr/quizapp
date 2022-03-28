@@ -127,6 +127,9 @@ let JsQuestions = [
   },
 ];
 
+const successSound = new Audio("audio/success.mp3");
+const errorSound = new Audio("audio/error.mp3");
+
 let questions = [];
 
 let currentQuestion = 0;
@@ -143,6 +146,7 @@ function start(element, section) {
   setActiveNavlink(element);
   showStartingContent(false);
   showEndScreen(false);
+  resetProgressBar();
   resetSavedAnswers();
   resetAnswerButtons();
   showQuestion(true);
@@ -204,9 +208,11 @@ function answer(selection) {
   if (Number(selectedQuestionNumber) === question.right_answer) {
     document.getElementById(selection).parentNode.classList.add("container-success");
     rightAnswers++;
+    successSound.play();
   } else {
     document.getElementById(selection).parentNode.classList.add("container-danger");
     document.getElementById(idOfRightAnswer).parentNode.classList.add("container-success");
+    errorSound.play();
   }
   enableNextButton(true);
   enableAnswers(false);
