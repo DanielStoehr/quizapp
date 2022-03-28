@@ -9,8 +9,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* min-height: 100vh; */
-  /* width: 100%; */
   flex: 1;
 }
 
@@ -33,6 +31,17 @@ body {
 #progressbar {
   height: 10px;
   background-color: grey;
+  position: relative;
+  overflow: hidden;
+}
+
+#current-progress {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  background-color: #173ce8;
 }
 
 .navlink {
@@ -67,7 +76,7 @@ body {
   right: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   z-index: 0;
 }
 
@@ -154,13 +163,15 @@ body {
   position: relative;
   background-color: #f7d5bb;
   border-radius: 100%;
-  height: 300px;
-  width: 300px;
+  width: 90%;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   font-family: "Rubik", sans-serif;
   font-weight: bold;
+  aspect-ratio: 1;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 #endscreen-image {
@@ -183,4 +194,41 @@ body {
 
 .score-headline {
   color: #173ce8;
+  margin-right: 16px;
+}
+
+@media (max-width: 700px) {
+  .content-container {
+    height: 100%;
+    width: 100%;
+  }
+
+  .main-content {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .nav-bar {
+    padding-top: 32px;
+  }
+
+  #question-body {
+    padding-top: 32px;
+    position: relative;
+    width: unset;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  #next-button {
+    bottom: unset;
+  }
+
+  .answer-letter {
+    margin-right: 5px;
+  }
+
+  #starting-content {
+    height: 100%;
+  }
 }

@@ -83,13 +83,14 @@ let CssQuestions = [
     right_answer: 1,
   },
 ];
+
 let JsQuestions = [
   {
     question: "Wie greift man auf Elemente über die ID zu?",
-    answer_1: "document.getElementsByClassName()",
-    answer_2: "document.getElementsByTagName()",
-    answer_3: "document.getElementById()",
-    answer_4: "document.getElementsByName()",
+    answer_1: "getElementsByClassName()",
+    answer_2: "getElementsByTagName()",
+    answer_3: "getElementById()",
+    answer_4: "getElementsByName()",
     right_answer: 3,
   },
   {
@@ -140,6 +141,7 @@ function loadQuestions(section) {
 
 function start(section) {
   showStartingContent(false);
+  showEndScreen(false);
   resetSavedAnswers();
   resetAnswerButtons();
   showQuestion(true);
@@ -177,6 +179,7 @@ function showEndScreen(boolean) {
 }
 
 function setQuestion() {
+  updateProgressBar();
   if (currentQuestion >= questions.length) {
     showQuestion(false);
     showEndScreen(true);
@@ -246,4 +249,9 @@ function replay() {
   rightAnswers = 0;
   showEndScreen(false);
   showQuestion(true);
+}
+
+function updateProgressBar() {
+  const progressLength = ((currentQuestion + 1) / questions.length) * 100;
+  document.getElementById("current-progress").style = `width: ${progressLength}%`;
 }
